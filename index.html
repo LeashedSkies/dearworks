@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEAHWORKS</title>
     <link rel="icon" href="https://i.ibb.co/MD2r7Mf/image-2024-07-24-172943665.png">
-    
     <style>
         /* Basic Reset */
         * {
@@ -16,40 +15,32 @@
 
         /* Body styling */
         body {
-            background-color: #35383d; /* Updated grey background */
+            background-color: #35383d;
             color: white;
             text-align: center;
             font-family: Arial, sans-serif;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
         }
 
         .title {
-            color: #00FFFF; /* Cyan color */
+            color: #00FFFF;
             font-weight: bold;
             margin-top: 90px;
-            font-size: 2.5rem; /* Default large font size for titles */
-        }
-
-        .spotify-embed iframe {
-            border-radius: 12px;
-            margin-top: 50px;
-            border: none;
-            width: 85%;
-            max-width: 600px;
+            font-size: 2.5rem;
         }
 
         .link {
             display: block;
             margin-top: 20px;
-            color: #00FFFF; /* Cyan color */
+            color: #00FFFF;
             font-weight: bold;
             text-decoration: none;
-            transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover transition */
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .link:hover {
-            color: #00B8B8; /* Darker cyan for hover effect */
-            transform: scale(1.1); /* Slight zoom effect on hover */
+            color: #00B8B8;
+            transform: scale(1.1);
         }
 
         /* Preload screen */
@@ -70,7 +61,6 @@
             transition: opacity 0.5s ease;
         }
 
-        /* Hidden Preload screen when loaded */
         #preload.loaded {
             opacity: 0;
             pointer-events: none;
@@ -82,19 +72,33 @@
             transition: filter 0.3s ease;
         }
 
-        /* Hidden iframe for Chrome Dino mini-game */
-        #dino {
-            display: none;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 999;
+        /* Spotify Embed */
+        .spotify-container {
+            margin-top: 300px; /* Moves Spotify to the bottom */
         }
 
-        /* Return to surface button */
+        .spotify-embed iframe {
+            border-radius: 12px;
+            border: none;
+            width: 85%;
+            max-width: 600px;
+            height: 152px;
+            loading: lazy;
+        }
+
+        /* Chrome Dino Game */
+        #dino {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            margin-top: 3000px; /* Makes sure users scroll for 5 seconds */
+        }
+
+        /* Return to Surface Button */
         #return-to-surface {
             position: fixed;
-            bottom: 30px;
+            bottom: -50px;
             left: 50%;
             transform: translateX(-50%);
             background-color: #00FFFF;
@@ -104,31 +108,33 @@
             border-radius: 25px;
             font-size: 1.2rem;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, bottom 0.5s ease;
+            opacity: 0;
         }
 
-        #return-to-surface:hover {
-            background-color: #00B8B8;
+        #return-to-surface.show {
+            bottom: 30px;
+            opacity: 1;
         }
 
-        /* Mobile and tablet responsiveness */
+        /* Mobile & Tablet */
         @media (max-width: 768px) {
             .title {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+
+            .link {
+                font-size: 1.3rem;
             }
 
             .spotify-embed iframe {
                 width: 90%;
             }
-
-            .link {
-                font-size: 1.2rem;
-            }
         }
 
         @media (max-width: 480px) {
             .title {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
 
             .spotify-embed iframe {
@@ -137,83 +143,91 @@
             }
 
             .link {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Preload Screen -->
-    <div id="preload">LOADING WEBSITE :3</div>
+<!-- Preload Screen -->
+<div id="preload">LOADING WEBSITE :3</div>
 
-    <div class="container">
-        <h1 class="title">LEAHWORKS</h1>
-        <h1 class="title">@LeashedSkies/@LeashedExperiments NOT IN A TIMEOUT</h1>
+<div class="container">
+    <h1 class="title">LEAHWORKS</h1>
+    <h1 class="title">@LeashedSkies/@LeashedExperiments NOT IN A TIMEOUT</h1>
 
-        <div class="spotify-embed">
-            <iframe src="https://open.spotify.com/embed/playlist/0DkGEImISEEVVcqWoZityG" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
+    <a href="https://gamejolt.com/invite/LeashedExperiments" class="link">FOLLOW MY GAMEJOLT: LeashedExperiments</a>
+    <a href="https://gamejolt.com/invite/LeashedExperiments" class="link">FOLLOW MY GAMEJOLT: LeashedExperiments</a>
+    <a href="https://gamejolt.com/c/CYN-swtvjf" class="link">JOIN THE CYN CULT</a>
 
-        <a href="https://gamejolt.com/invite/LeashedExperiments" class="link">FOLLOW MY GAMEJOLT: LeashedExperiments</a>
-        <a href="https://gamejolt.com/invite/LeashedExperiments" class="link">FOLLOW MY GAMEJOLT: LeashedExperiments</a>
-        <a href="https://gamejolt.com/c/CYN-swtvjf" class="link">JOIN THE CYN CULT</a>
+    <a href="https://discord.gg/pxpNFMVsXM" class="link">PLEASE JOIN MY DISCORD SERVER!!!</a>
+</div>
 
-        <div class="spotify-embed">
-            <iframe src="https://open.spotify.com/embed/album/3HNnxK7NgLXbDoxRZxNWiR?utm_source=generator&theme=0" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-
-        <a href="https://discord.gg/pxpNFMVsXM" class="link">PLEASE JOIN MY DISCORD SERVER!!!</a>
+<!-- Spotify Embeds (Moved to Bottom) -->
+<div class="spotify-container">
+    <div class="spotify-embed">
+        <iframe src="https://open.spotify.com/embed/playlist/0DkGEImISEEVVcqWoZityG" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
     </div>
-
-    <!-- Chrome Dino (Secret Game) -->
-    <div id="dino">
-        <iframe src="https://chromedino.com/" frameborder="0" scrolling="no" width="100%" height="100%" loading="lazy"></iframe>
-        <style type="text/css">
-            iframe { position: absolute; width: 100%; height: 100%; z-index: 999; }
-        </style>
+    <div class="spotify-embed">
+        <iframe src="https://open.spotify.com/embed/album/3HNnxK7NgLXbDoxRZxNWiR?utm_source=generator&theme=0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
     </div>
+</div>
 
-    <!-- Return to Surface Button -->
-    <button id="return-to-surface">Return to the Surface</button>
+<!-- Chrome Dino (Hidden Easter Egg) -->
+<div id="dino">
+    <iframe src="https://chromedino.com/" frameborder="0" scrolling="no"></iframe>
+</div>
 
-    <script>
-        // Preload Screen and Loading Timeout
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('preload').classList.add('loaded');
-            }, 500); // Fade out preload screen after 500ms
-        });
+<!-- Return to Surface Button -->
+<button id="return-to-surface">Return to the Surface</button>
 
-        // Check for no internet connection
-        let loadingTimeout = setTimeout(function() {
-            document.getElementById('preload').textContent = "No Connection! Retrying...";
-            setTimeout(() => {
-                location.reload(); // Retry after 3 seconds
-            }, 3000);
-        }, 30000); // Timeout after 30 seconds
+<script>
+    // Preload Screen
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('preload').classList.add('loaded');
+        }, 500);
+    });
 
-        // Scroll event - Motion blur effect
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', function() {
-            if (Math.abs(window.scrollY - lastScrollTop) > 50) {
-                document.body.classList.add('blur'); // Apply blur on fast scroll
-            } else {
-                document.body.classList.remove('blur'); // Remove blur if scrolling slows down
-            }
-            lastScrollTop = window.scrollY;
+    // Internet Check
+    let loadingTimeout = setTimeout(() => {
+        document.getElementById('preload').textContent = "No Connection! Retrying...";
+        setTimeout(() => location.reload(), 3000);
+    }, 30000);
 
-            // Trigger Chrome Dino mini-game when scrolled deep
-            if (window.scrollY > 2000) {
-                document.getElementById('dino').style.display = 'block';
-            }
-        });
+    // Scroll Event - Blur Effect & Dino Game Reveal
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+        let scrollY = window.scrollY;
 
-        // Return to Surface Button Functionality
-        document.getElementById('return-to-surface').addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
+        if (Math.abs(scrollY - lastScrollTop) > 50) {
+            document.body.classList.add('blur');
+        } else {
+            document.body.classList.remove('blur');
+        }
+
+        lastScrollTop = scrollY;
+
+        // Show Dino Game
+        if (scrollY > 2500) {
+            document.getElementById('dino').style.display = 'block';
+        }
+
+        // Show "Return to Surface" Button
+        let returnButton = document.getElementById('return-to-surface');
+        if (scrollY > 300) {
+            returnButton.classList.add('show');
+        } else {
+            returnButton.classList.remove('show');
+        }
+    });
+
+    // Return to Surface Button
+    document.getElementById('return-to-surface').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
 
 </body>
 </html>
