@@ -20,6 +20,7 @@
             text-align: center;
             font-family: Arial, sans-serif;
             overflow-x: hidden;
+            transition: all 0.3s ease-in-out;
         }
 
         .title {
@@ -43,38 +44,28 @@
             transform: scale(1.1);
         }
 
-        /* Preload screen */
-        #preload {
+        /* Legacy Mode Button */
+        #legacy-toggle {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.8);
+            top: 10px;
+            left: 10px;
+            background-color: #008080;
             color: white;
-            font-size: 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 0.5s ease;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
         }
 
-        #preload.loaded {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* Motion blur effect */
-        body.blur {
-            filter: blur(4px);
-            transition: filter 0.3s ease;
+        #legacy-toggle:hover {
+            background-color: #005757;
         }
 
         /* Spotify Embed */
         .spotify-container {
-            margin-top: 300px; /* Moves Spotify to the bottom */
+            margin-top: 300px;
         }
 
         .spotify-embed iframe {
@@ -86,13 +77,13 @@
             loading: lazy;
         }
 
-        /* Chrome Dino Game */
+        /* Chrome Dino Game - Hidden Very Far Down */
         #dino {
             display: none;
             width: 100%;
-            height: 100%;
+            height: 500px;
             position: absolute;
-            margin-top: 3000px; /* Makes sure users scroll for 5 seconds */
+            margin-top: 100000px; /* Hidden far down, must scroll manually */
         }
 
         /* Return to Surface Button */
@@ -115,6 +106,38 @@
         #return-to-surface.show {
             bottom: 30px;
             opacity: 1;
+        }
+
+        /* Lightweight (Legacy) Mode */
+        .legacy-mode {
+            background-color: white !important;
+            color: black !important;
+            font-family: "Times New Roman", serif !important;
+        }
+
+        .legacy-mode .title {
+            color: black !important;
+            font-weight: normal !important;
+            font-size: 1.8rem !important;
+        }
+
+        .legacy-mode .link {
+            color: blue !important;
+            text-decoration: underline !important;
+            font-size: 1rem !important;
+            transition: none !important;
+        }
+
+        .legacy-mode .spotify-container {
+            display: none;
+        }
+
+        .legacy-mode #dino {
+            display: none;
+        }
+
+        .legacy-mode #legacy-toggle {
+            background-color: gray !important;
         }
 
         /* Mobile & Tablet */
@@ -150,8 +173,8 @@
 </head>
 <body>
 
-<!-- Preload Screen -->
-<div id="preload">LOADING WEBSITE :3</div>
+<!-- Legacy Mode Button -->
+<button id="legacy-toggle">Legacy Mode</button>
 
 <div class="container">
     <h1 class="title">LEAHWORKS</h1>
@@ -164,7 +187,7 @@
     <a href="https://discord.gg/pxpNFMVsXM" class="link">PLEASE JOIN MY DISCORD SERVER!!!</a>
 </div>
 
-<!-- Spotify Embeds (Moved to Bottom) -->
+<!-- Spotify Embeds -->
 <div class="spotify-container">
     <div class="spotify-embed">
         <iframe src="https://open.spotify.com/embed/playlist/0DkGEImISEEVVcqWoZityG" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
@@ -174,7 +197,7 @@
     </div>
 </div>
 
-<!-- Chrome Dino (Hidden Easter Egg) -->
+<!-- Chrome Dino (Hidden Far Down) -->
 <div id="dino">
     <iframe src="https://chromedino.com/" frameborder="0" scrolling="no"></iframe>
 </div>
@@ -183,34 +206,13 @@
 <button id="return-to-surface">Return to the Surface</button>
 
 <script>
-    // Preload Screen
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            document.getElementById('preload').classList.add('loaded');
-        }, 500);
-    });
-
-    // Internet Check
-    let loadingTimeout = setTimeout(() => {
-        document.getElementById('preload').textContent = "No Connection! Retrying...";
-        setTimeout(() => location.reload(), 3000);
-    }, 30000);
-
-    // Scroll Event - Blur Effect & Dino Game Reveal
+    // Scroll Event - Show Dino & Return Button
     let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
         let scrollY = window.scrollY;
 
-        if (Math.abs(scrollY - lastScrollTop) > 50) {
-            document.body.classList.add('blur');
-        } else {
-            document.body.classList.remove('blur');
-        }
-
-        lastScrollTop = scrollY;
-
-        // Show Dino Game
-        if (scrollY > 2500) {
+        // Reveal Dino Game if scrolled far enough
+        if (scrollY > 99000) {
             document.getElementById('dino').style.display = 'block';
         }
 
@@ -226,6 +228,17 @@
     // Return to Surface Button
     document.getElementById('return-to-surface').addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Toggle Legacy Mode
+    let legacyButton = document.getElementById('legacy-toggle');
+    legacyButton.addEventListener('click', () => {
+        if (document.body.classList.contains('legacy-mode')) {
+            location.reload(); // Reset to default modern mode
+        } else {
+            document.body.classList.add('legacy-mode');
+            legacyButton.textContent = "Modern Mode (Default)";
+        }
     });
 </script>
 
