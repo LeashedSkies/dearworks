@@ -2,40 +2,88 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEAHWORKS</title>
     <link rel="icon" href="https://i.ibb.co/MD2r7Mf/image-2024-07-24-172943665.png">
     <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: black;
+            background-color: #333333; /* Soft grey background */
             color: white;
             text-align: center;
             font-family: Arial, sans-serif;
         }
+
         .title {
             color: #00FFFF; /* Cyan color */
             font-weight: bold;
             margin-top: 90px;
+            font-size: 2.5rem; /* Default large font size for titles */
         }
+
         .spotify-embed iframe {
             border-radius: 12px;
             margin-top: 50px;
             border: none;
+            width: 85%;
+            max-width: 600px; /* Ensures it doesn't stretch too wide on larger screens */
         }
+
         .link {
             display: block;
             margin-top: 20px;
             color: #00FFFF; /* Cyan color */
             font-weight: bold;
             text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover transition */
         }
+
         .link:hover {
             color: #00B8B8; /* Darker cyan for hover effect */
+            transform: scale(1.1); /* Slight zoom effect on hover */
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+
+        /* Mobile and tablet responsiveness */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem; /* Adjusted font size for tablets */
+            }
+
+            .spotify-embed iframe {
+                width: 90%; /* Adjust iframe size for tablet devices */
+            }
+
+            .link {
+                font-size: 1.2rem; /* Adjust font size for better readability */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.5rem; /* Smaller font size for very small screens */
+            }
+
+            .spotify-embed iframe {
+                width: 100%; /* Make iframe full width for phones */
+                height: 120px; /* Reduce height for smaller screens */
+            }
+
+            .link {
+                font-size: 1rem; /* Slightly smaller font size on phones */
+            }
+        }
+
+        /* Additional Mobile-friendly Hover States */
+        .link:active,
+        .link:focus {
+            color: #00B8B8; /* Ensure hover color works on mobile taps */
+            transform: scale(1.1); /* Apply the same zoom effect on tap for mobile */
         }
     </style>
 </head>
@@ -43,15 +91,19 @@
     <div class="container">
         <h1 class="title">LEAHWORKS</h1>
         <h1 class="title">@LeashedSkies/@LeashedExperiments NOT IN A TIMEOUT</h1>
+
         <div class="spotify-embed">
-            <iframe src="https://open.spotify.com/embed/playlist/0DkGEImISEEVVcqWoZityG" width="85%" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe src="https://open.spotify.com/embed/playlist/0DkGEImISEEVVcqWoZityG" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
+
         <a href="https://gamejolt.com/invite/LeashedExperiments" class="link">FOLLOW MY GAMEJOLT: LeashedExperiments</a>
         <a href="https://gamejolt.com/invite/LeashedExperiments" class="link">FOLLOW MY GAMEJOLT: LeashedExperiments</a>
         <a href="https://gamejolt.com/c/CYN-swtvjf" class="link">JOIN THE CYN CULT</a>
+
         <div class="spotify-embed">
-            <iframe src="https://open.spotify.com/embed/album/3HNnxK7NgLXbDoxRZxNWiR?utm_source=generator&theme=0" width="600" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe src="https://open.spotify.com/embed/album/3HNnxK7NgLXbDoxRZxNWiR?utm_source=generator&theme=0" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
+
         <a href="https://discord.gg/pxpNFMVsXM" class="link">PLEASE JOIN MY DISCORD SERVER!!!</a>
     </div>
 </body>
