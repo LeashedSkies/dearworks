@@ -240,6 +240,15 @@
             legacyButton.textContent = "Modern Mode (Default)";
         }
     });
+
+    // Secret Redirect After 10 Clicks
+    let clickCount = 0;
+    document.body.addEventListener('click', function() {
+        clickCount++;
+        if (clickCount >= 10) {
+            window.location.href = "https://youareansigma.org";
+        }
+    });
 </script>
 
 </body>
