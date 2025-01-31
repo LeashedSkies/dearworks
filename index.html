@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEAHWORKS</title>
     <link rel="icon" href="https://i.ibb.co/MD2r7Mf/image-2024-07-24-172943665.png">
+    
     <style>
         /* Basic Reset */
         * {
@@ -13,11 +14,13 @@
             box-sizing: border-box;
         }
 
+        /* Body styling */
         body {
-            background-color: #333333; /* Soft grey background */
+            background-color: #35383d; /* Updated grey background */
             color: white;
             text-align: center;
             font-family: Arial, sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         .title {
@@ -32,7 +35,7 @@
             margin-top: 50px;
             border: none;
             width: 85%;
-            max-width: 600px; /* Ensures it doesn't stretch too wide on larger screens */
+            max-width: 600px;
         }
 
         .link {
@@ -49,45 +52,101 @@
             transform: scale(1.1); /* Slight zoom effect on hover */
         }
 
+        /* Preload screen */
+        #preload {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Hidden Preload screen when loaded */
+        #preload.loaded {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Motion blur effect */
+        body.blur {
+            filter: blur(4px);
+            transition: filter 0.3s ease;
+        }
+
+        /* Hidden iframe for Chrome Dino mini-game */
+        #dino {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+        }
+
+        /* Return to surface button */
+        #return-to-surface {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #00FFFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #return-to-surface:hover {
+            background-color: #00B8B8;
+        }
+
         /* Mobile and tablet responsiveness */
         @media (max-width: 768px) {
             .title {
-                font-size: 2rem; /* Adjusted font size for tablets */
+                font-size: 2rem;
             }
 
             .spotify-embed iframe {
-                width: 90%; /* Adjust iframe size for tablet devices */
+                width: 90%;
             }
 
             .link {
-                font-size: 1.2rem; /* Adjust font size for better readability */
+                font-size: 1.2rem;
             }
         }
 
         @media (max-width: 480px) {
             .title {
-                font-size: 1.5rem; /* Smaller font size for very small screens */
+                font-size: 1.5rem;
             }
 
             .spotify-embed iframe {
-                width: 100%; /* Make iframe full width for phones */
-                height: 120px; /* Reduce height for smaller screens */
+                width: 100%;
+                height: 120px;
             }
 
             .link {
-                font-size: 1rem; /* Slightly smaller font size on phones */
+                font-size: 1rem;
             }
-        }
-
-        /* Additional Mobile-friendly Hover States */
-        .link:active,
-        .link:focus {
-            color: #00B8B8; /* Ensure hover color works on mobile taps */
-            transform: scale(1.1); /* Apply the same zoom effect on tap for mobile */
         }
     </style>
 </head>
 <body>
+
+    <!-- Preload Screen -->
+    <div id="preload">LOADING WEBSITE :3</div>
+
     <div class="container">
         <h1 class="title">LEAHWORKS</h1>
         <h1 class="title">@LeashedSkies/@LeashedExperiments NOT IN A TIMEOUT</h1>
@@ -106,5 +165,55 @@
 
         <a href="https://discord.gg/pxpNFMVsXM" class="link">PLEASE JOIN MY DISCORD SERVER!!!</a>
     </div>
+
+    <!-- Chrome Dino (Secret Game) -->
+    <div id="dino">
+        <iframe src="https://chromedino.com/" frameborder="0" scrolling="no" width="100%" height="100%" loading="lazy"></iframe>
+        <style type="text/css">
+            iframe { position: absolute; width: 100%; height: 100%; z-index: 999; }
+        </style>
+    </div>
+
+    <!-- Return to Surface Button -->
+    <button id="return-to-surface">Return to the Surface</button>
+
+    <script>
+        // Preload Screen and Loading Timeout
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preload').classList.add('loaded');
+            }, 500); // Fade out preload screen after 500ms
+        });
+
+        // Check for no internet connection
+        let loadingTimeout = setTimeout(function() {
+            document.getElementById('preload').textContent = "No Connection! Retrying...";
+            setTimeout(() => {
+                location.reload(); // Retry after 3 seconds
+            }, 3000);
+        }, 30000); // Timeout after 30 seconds
+
+        // Scroll event - Motion blur effect
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            if (Math.abs(window.scrollY - lastScrollTop) > 50) {
+                document.body.classList.add('blur'); // Apply blur on fast scroll
+            } else {
+                document.body.classList.remove('blur'); // Remove blur if scrolling slows down
+            }
+            lastScrollTop = window.scrollY;
+
+            // Trigger Chrome Dino mini-game when scrolled deep
+            if (window.scrollY > 2000) {
+                document.getElementById('dino').style.display = 'block';
+            }
+        });
+
+        // Return to Surface Button Functionality
+        document.getElementById('return-to-surface').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
 </body>
 </html>
