@@ -1,12 +1,37 @@
+/* Define a modern color palette */
 :root {
- --color-1: rgb(0,0,0);
- --color-2: rgb(0,0,0);
- --color-3: rgb(0,0,0);
- --color-4: rgb(0,0,0);
+    --color-1: #111; /* Dark Gray */
+    --color-2: #222; /* Slightly lighter */
+    --color-3: #333; /* Mid-tone Gray */
+    --color-4: #444; /* Lightest Gray */
 }
 
+/* Body Background with an Improved Gradient */
 body {
- background: linear-gradient(90deg, var(--color-1) 0%, var(--color-1) 25%, var(--color-2) 25%, var(--co
-lor-2) 25%, var(--color-2) 50%, var(--color-3) 50%, var(--color-3) 75%, var(--color-4) 75%, var(--color-4) 100%);
+    background: linear-gradient(90deg, 
+        var(--color-1) 0%, var(--color-2) 25%, 
+        var(--color-3) 50%, var(--color-4) 75%, 
+        var(--color-1) 100%);
+    background-size: 200% 100%; /* Makes it dynamic */
+    animation: gradientShift 10s ease infinite alternate; /* Smooth Gradient Animation */
+    color: white; /* Improved Readability */
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background 0.5s ease; /* Smooth Theme Change */
 }
- 
+
+/* Optional: Add a gradient animation effect */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Improve accessibility */
+* {
+    box-sizing: border-box;
+}
